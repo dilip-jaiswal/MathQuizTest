@@ -8,17 +8,22 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/*
+ *  Main Activity of application.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     ImageButton btnMathPlay, btnMathShare, btnMathRate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnMathPlay = (ImageButton) findViewById(R.id.btnMathPlay);
-        btnMathShare= (ImageButton) findViewById(R.id.btnMathShare);
-        btnMathRate = (ImageButton) findViewById(R.id.btnMathRate);
+        btnMathPlay = findViewById(R.id.btnMathPlay);
+        btnMathShare = findViewById(R.id.btnMathShare);
+        btnMathRate = findViewById(R.id.btnMathRate);
 
         btnMathPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                  *  Game Activity will be started
                  */
 
-                Intent i = new Intent(MainActivity.this,GameActivity.class);
+                Intent i = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(i);
             }
         });
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                  *  Simple Toast Message To Display Message For Short Duration
                  *  Link that to your app landing page.
                  */
-                Toast.makeText(MainActivity.this,"You can open your Google Play landing page", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "You can open your Google Play landing page", Toast.LENGTH_LONG).show();
             }
         });
     }
