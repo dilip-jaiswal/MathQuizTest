@@ -1,5 +1,6 @@
 package com.example.mathquiztest;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,15 +13,16 @@ public class ScoreActivity extends AppCompatActivity {
 
     ImageButton btnMathShare;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
-        TextView tv = (TextView) findViewById(R.id.score);
+        TextView tv = findViewById(R.id.score);
         int score = getIntent().getIntExtra("score", 0);
         tv.setText("Current Score : " + score);
 
-        btnMathShare= (ImageButton) findViewById(R.id.btnMathShare);
+        btnMathShare= findViewById(R.id.btnMathShare);
 
         btnMathShare.setOnClickListener(new View.OnClickListener() {
             @Override
