@@ -13,24 +13,34 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test:
+#    job name “Run Unit Tests” with the key name
     name: Run Unit Tests
+#    define in which virtual machine this job will run
     runs-on: ubuntu-latest
 
     steps:
+#      checks out the repository for which we have defined actions.
       - uses: actions/checkout@v2
+#      It is a predefined action which Github server uses to setup java environment
       - name: set up JDK 1.8
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+#          tests with run: action using the gradle wrapper command-line tool
       - name: Unit tests
         run: bash ./gradlew test --stacktrace
 
   build:
+#    job name “Generate APK” with the key name
     name: Generate APK
+#    define in which virtual machine this job will run
     runs-on: ubuntu-latest
 
     steps:
+#      checks out the repository for which we have defined actions.
       - uses: actions/checkout@v2
+
+#      It is a predefined action which Github server uses to setup java environment for us
       - name: set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -39,6 +49,7 @@ jobs:
         run: bash ./gradlew :app:assembleDebug
 
       - name: Upload APK
+#        upload the APK using predefined action actions/upload-artifact@v2.
         uses: actions/upload-artifact@v2
         with:
           name: maith_quiz_apk
